@@ -1,0 +1,9 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "SwaggerKey": "auth",
+      "ApiDocs": "https://localhost:6001/swagger/v1/swagger.json",
+      "GatewayDocs": "https://localhost:7130/swagger/v1/swagger.json"
+    }
+  ]
+}
