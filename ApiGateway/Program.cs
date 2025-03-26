@@ -27,7 +27,7 @@ namespace ApiGateway
                 {
                     options.Authority = "https://localhost:6001";
                     options.RequireHttpsMetadata = true;
-                    options.Audience = "";
+                    options.Audience = "https://localhost:6005";
                 });
 
             builder.Services.AddOcelot();
