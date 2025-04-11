@@ -22,9 +22,9 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/auth/token",
+      "UpstreamPathTemplate": "/auth/change-pass",
       "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/auth/token",
+      "DownstreamPathTemplate": "/api/auth/change-password",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -34,15 +34,69 @@
       ],
       "RateLimitOptions": {
         "EnableRateLimiting": true,
-        "Period": "1m",
-        "PeriodTimespan": 60,
-        "Limit": 10
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
       }
     },
     {
-      "UpstreamPathTemplate": "/auth/refresh",
+      "UpstreamPathTemplate": "/auth/reset-pass",
       "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/auth/refresh",
+      "DownstreamPathTemplate": "/api/auth/reset-password",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth/request-email-change",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/request-email-change",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth/change-email",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/change-email",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth/verify-email",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/verify-email",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -76,55 +130,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/protected",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/back/protected",
-      "DownstreamScheme": "https",
-      "DownstreamHeaderTransform": {
-        "Authorization": "LeaveAsIs"
-      },
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 6005 //7186
-        }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "Issuer": "https://localhost:6001",
-        "Audience": "https://localhost:6005",
-        "AllowedScopes": []
-      }
-    },
-    {
-      "UpstreamPathTemplate": "/connect/token",
-      "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/auth/connect/token",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 6001
-        }
-      ],
-      "RateLimitOptions": {
-        "EnableRateLimiting": true,
-        "Period": "1m",
-        "PeriodTimespan": 60,
-        "Limit": 10
-      }
-    },
-    {
-      "UpstreamPathTemplate": "/meow",
-      "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/auth/meow",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 6001
-        }
-      ]
+
     }
 
   ],
