@@ -257,7 +257,7 @@
     },
     {
       "UpstreamPathTemplate": "/convert/{value}/{baseCurrency}/{quoteCurrency}",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/exchange/{value}/{baseCurrency}/{quoteCurrency}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
