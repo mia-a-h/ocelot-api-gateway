@@ -148,7 +148,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-user-by-id",
+      "UpstreamPathTemplate": "/get-user-by-id/{userId}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}",
       "DownstreamScheme": "https",
@@ -184,7 +184,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/update-role",
+      "UpstreamPathTemplate": "/update-role/{userId}",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/role",
       "DownstreamScheme": "https",
@@ -202,7 +202,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/activate-user",
+      "UpstreamPathTemplate": "/activate-user/{userId}",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/activate",
       "DownstreamScheme": "https",
@@ -220,7 +220,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/deactivate-user",
+      "UpstreamPathTemplate": "/deactivate-user/{userId}",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/deactivate",
       "DownstreamScheme": "https",
@@ -238,9 +238,27 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/delete-user",
+      "UpstreamPathTemplate": "/delete-user/{userId}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/convert/{value}/{baseCurrency}/{quoteCurrency}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/exchange/{value}/{baseCurrency}/{quoteCurrency}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
