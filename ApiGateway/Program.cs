@@ -53,16 +53,14 @@ namespace ApiGateway
 
             app.UseSwaggerForOcelotUI();
 
-            app.UseRouting();
-
-            await app.UseOcelot();
-
             app.UseCors("AllowAll");
-            app.UseHttpsRedirection();
 
+            app.UseRouting();
+            app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
 
+            await app.UseOcelot();
 
             app.MapControllers();
 

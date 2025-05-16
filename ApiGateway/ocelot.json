@@ -40,6 +40,24 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/auth/reset-pass-token",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/reset-password-token",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
+      }
+    },
+    {
       "UpstreamPathTemplate": "/auth/reset-pass",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/auth/reset-password",
@@ -94,6 +112,24 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/auth/send-verification-email",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/send-verification-email",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10m",
+        "PeriodTimespan": 600,
+        "Limit": 5
+      }
+    },
+    {
       "UpstreamPathTemplate": "/auth/verify-email",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/auth/verify-email",
@@ -114,7 +150,7 @@
     {
       "UpstreamPathTemplate": "/login",
       "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/back/login",
+      "DownstreamPathTemplate": "/api/login/login",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -130,7 +166,25 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-users",
+      "UpstreamPathTemplate": "/logout",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/login/logout",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/admin/users",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/admin/users",
       "DownstreamScheme": "https",
@@ -148,7 +202,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-user-by-id/{userId}",
+      "UpstreamPathTemplate": "/admin/user/{userId}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}",
       "DownstreamScheme": "https",
@@ -166,7 +220,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/create-user",
+      "UpstreamPathTemplate": "/admin/user",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/admin/users",
       "DownstreamScheme": "https",
@@ -184,7 +238,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/update-role/{userId}",
+      "UpstreamPathTemplate": "/admin/users/{userId}/role",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/role",
       "DownstreamScheme": "https",
@@ -202,7 +256,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/activate-user/{userId}",
+      "UpstreamPathTemplate": "/admin/users/{userId}/activate",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/activate",
       "DownstreamScheme": "https",
@@ -220,7 +274,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/deactivate-user/{userId}",
+      "UpstreamPathTemplate": "/admin/users/{userId}/deactivate",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}/deactivate",
       "DownstreamScheme": "https",
@@ -238,7 +292,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/delete-user/{userId}",
+      "UpstreamPathTemplate": "/admin/users/{userId}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/admin/users/{userId}",
       "DownstreamScheme": "https",
@@ -256,7 +310,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/convert/{value}/{baseCurrency}/{quoteCurrency}",
+      "UpstreamPathTemplate": "/exchange/convert/{value}/{baseCurrency}/{quoteCurrency}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/exchange/{value}/{baseCurrency}/{quoteCurrency}",
       "DownstreamScheme": "https",
@@ -274,7 +328,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-portfolios",
+      "UpstreamPathTemplate": "/portfolios",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/portfolio",
       "DownstreamScheme": "https",
@@ -292,7 +346,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-portfolio/{portfolioId}",
+      "UpstreamPathTemplate": "/portfolio/{portfolioId}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/portfolio/{portfolioId}",
       "DownstreamScheme": "https",
@@ -310,7 +364,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/create-portfolio",
+      "UpstreamPathTemplate": "/portfolio",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/portfolio/create",
       "DownstreamScheme": "https",
@@ -328,7 +382,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/add-coin-to-portfolio",
+      "UpstreamPathTemplate": "/portfolio/coin/add",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/portfolio/coin/add",
       "DownstreamScheme": "https",
@@ -346,7 +400,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/delete-portfolio-coin/{portfolioCoinId}",
+      "UpstreamPathTemplate": "/portfolio/coin/{portfolioCoinId}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/portfolio/coin/{portfolioCoinId}",
       "DownstreamScheme": "https",
@@ -364,7 +418,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/update-portfolio/{portfolioId}",
+      "UpstreamPathTemplate": "/portfolio/{portfolioId}",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/portfolio/{portfolioId}",
       "DownstreamScheme": "https",
@@ -382,7 +436,7 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/delete-portfolio/{portfolioId}",
+      "UpstreamPathTemplate": "/portfolio/{portfolioId}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/portfolio/{portfolioId}",
       "DownstreamScheme": "https",
@@ -400,9 +454,441 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/get-portfolio-performance/{portfolioId}",
+      "UpstreamPathTemplate": "/portfolio/{portfolioId}/performance",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/portfolio/{portfolioId}/performance",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/portfolio/{portfolioId}/{currency}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/portfolio/{portfolioId}/{currency}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlists",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/watchlist",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/watchlist",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}/prices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}/prices",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}/coins",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}/coins",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}/coins/{coinId}/alerts",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}/coins/{coinId}/alerts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/watchlist/{id}/coins/{coinId}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/watchlist/{id}/coins/{coinId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/alerts",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/watchlist/alerts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/wallet",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/wallet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/wallet",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/wallet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/wallet/balance",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/wallet/balance",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/wallet/deposit",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/wallet/deposit",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/wallet/withdraw",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/wallet/withdraw",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/transaction",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/portfolio/{portfolioId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/transaction/portfolio/{portfolioId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/{transactionId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/transaction/{transactionId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/transfer",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/transaction/transfer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/sale",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/transaction/sale",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/purchase",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/transaction/purchase",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/{transactionId}/confirm",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/transaction/{transactionId}/confirm",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6005
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/transaction/{transactionId}/cancel",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/transaction/{transactionId}/cancel",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -429,10 +915,10 @@
       ]
     },
     {
-      "Key": "Back",
+      "Key": "Login",
       "Config": [
         {
-          "Name": "Back API",
+          "Name": "Login API",
           "Url": "https://localhost:6005/swagger/v1/swagger.json"
         }
       ]
